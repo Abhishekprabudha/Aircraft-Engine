@@ -29,7 +29,6 @@ st.title("✈️🧠 Safran × AIonOS | Aircraft Engine Acoustic Diagnostics, Op
 st.caption("Inline test-cell video, acoustic telemetry, AI diagnostic copilot, parametric identification, inspection scoring, and production management.")
 
 VIDEO_PATH = Path("assets/videos/engine_test_cell.mp4")
-IMAGE_PATH = Path("assets/images/solution_overview.png")
 
 
 def render_inline_video(video_path: Path, height: int = 360):
@@ -244,9 +243,6 @@ if autoplay:
 diag, qual, ops, rul_hours, findings = compute_scores(x, cursor)
 next_maint_str = (datetime.now() + timedelta(hours=rul_hours)).strftime("%d %b %Y, %I:%M %p")
 confidence = float(np.clip(74 + 14*x["bearing_wear"][cursor] + 10*x["resonance_drift"][cursor] - noise*3, 58, 94))
-
-if IMAGE_PATH.exists():
-    st.image(str(IMAGE_PATH), use_container_width=True)
 
 left, right = st.columns([1.05, 1.0], gap="large")
 
